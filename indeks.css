@@ -1,0 +1,115 @@
+body {
+    overflow-x: hidden;
+    background-color: #FFFAFA;
+    font-family: poppins;
+    margin-left: 60px;
+    display: flex;
+}
+
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    background-color: #26262b;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.isi-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.data-akun {
+    color: white;
+}
+
+.isi-list li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.isi-list a {
+    text-decoration: none;
+    color: white;
+}
+
+.isi-list li i {
+    min-width: 30px;
+    text-align: center;
+}
+
+.isi-list li span {
+    margin-left: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .isi-list li span {
+    opacity: 1;
+}
+
+
+.log-out-tombol {
+    margin-top: auto;
+    background-color: #1e1e22;
+}
+
+
+
+
+/* Isi */
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Tombol */
+button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    padding-left: 15PX;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #666b70;
+}
+
+/* Tautan Edit */
+.edit-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.edit-link:hover {
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}

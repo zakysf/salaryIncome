@@ -1,0 +1,278 @@
+body {
+    overflow-x: hidden;
+    background-color: #FFFAFA;
+    font-family: poppins;
+    display: flex;
+    margin-left: 60px;
+}
+
+.sidebar {
+    width: 60px;
+    position: fixed;
+    height: 100vh;
+    background-color: #26262b;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.isi-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.data-akun h4 {
+    color: white;
+    margin: 0;
+}
+
+.data-akun span p {
+    color: white;
+    font-size: 10px
+}
+
+
+
+.isi-list li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.isi-list a {
+    text-decoration: none;
+    color: white;
+}
+
+.isi-list li i {
+    min-width: 30px;
+    text-align: center;
+}
+
+.isi-list li span {
+    margin-left: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .isi-list li span {
+    opacity: 1;
+}
+
+
+.log-out-tombol {
+    margin-top: auto;
+    background-color: #1e1e22;
+}
+
+
+
+
+/* Isi */
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Tombol */
+button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    padding-left: 15PX;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #666b70;
+}
+
+/* Tautan Edit */
+.edit-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.edit-link:hover {
+    text-decoration: underline;
+}
+
+
+.main-content {
+    margin-left: 80px;
+    padding: 20px;
+    width: calc(100% - 80px);
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover~.main-content {
+    margin-left: 220px;
+}
+
+.slip-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.slip-title {
+    text-align: center;
+    color: #26262b;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.slip-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.company-info h2 {
+    margin: 0;
+    color: #26262b;
+    font-size: 18px;
+}
+
+.company-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.employee-info table {
+    border-collapse: collapse;
+}
+
+.employee-info td {
+    padding: 3px 0;
+    font-size: 14px;
+}
+
+.employee-info td:first-child {
+    font-weight: 500;
+    padding-right: 10px;
+}
+
+.salary-details {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.salary-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.salary-details th,
+.salary-details td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.salary-details .header-row {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.salary-details .deduction-row {
+    color: #d9534f;
+}
+
+.salary-details .total-row {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.signature-space {
+    height: 60px;
+    margin: 20px 0;
+    border-bottom: 1px solid #000;
+    width: 200px;
+}
+
+.print-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.print-button {
+    background-color: #26262b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.print-button:hover {
+    background-color: #3d3d44;
+}
+
+.print-button i {
+    margin-right: 8px;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .slip-container,
+    .slip-container * {
+        visibility: visible;
+    }
+
+    .slip-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .print-section {
+        display: none;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
