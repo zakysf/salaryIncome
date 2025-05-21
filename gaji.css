@@ -1,0 +1,73 @@
+body {
+    overflow-x: hidden;
+    background-color: #FFFAFA;
+    font-family: poppins;
+    margin-left: 60px;
+    display: flex;
+}
+
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    background-color: #26262b;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.isi-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.data-akun {
+    color: white;
+}
+
+.isi-list li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.isi-list a {
+    text-decoration: none;
+    color: white;
+}
+
+.isi-list li i {
+    min-width: 30px;
+    text-align: center;
+}
+
+.isi-list li span {
+    margin-left: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .isi-list li span {
+    opacity: 1;
+}
+
+
+.log-out-tombol {
+    margin-top: auto;
+    background-color: #1e1e22;
+}
