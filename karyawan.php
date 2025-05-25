@@ -54,7 +54,7 @@
             <p>Selamat datang di sistem payroll. Silakan pilih menu dari sidebar.</p>
         </div>
     </div>
-     <table>
+     <table class="table table-dark table-striped-columns">
         <tr>
             <td>Nama</td>
             <td>Email</td>

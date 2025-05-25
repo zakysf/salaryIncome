@@ -103,26 +103,32 @@
                 <th>Lainnya</th>
             </tr>
             <tr>
-                <?php
-            while ($row = $hasildata->fetch_array()) {
-            ?>
+         <?php
+            include 'koneksi.php';
+            
+            $query = mysqli_query($konek, "select * from karyawan");
+
+            // $array = [
+            //     "nama" => "zaky",
+            //     "email" => "zaky@gmail.com",
+            //     "pesan" => "saya sigma",
+            // ];
+            
+            //mengambil per baris data
+            while($data = mysqli_fetch_array($query))
+        ?>{
+            <tr>
+                <!-- menampilkan isi kolom nama -->
+                <td><?=htmlspecialcha($data['id_karyawan'])?></td> 
+                <!-- menampilkan isi kolom email -->
+                <td><?=htmlspecialchar($data['nama'])?></td> 
+                <!-- menampilkan isi kolom pesan -->
+                <td><?=htmlspecialchar($data['jabatan'])?></td>
                 <td>
-                    <?=$row['nama']?>
-                </td>
-                <td>
-                    <?=$row['id_karyawan']?>
-                </td>
-                <td>
-                    <?=$row['jabatan']?>
-                </td>
-                <td>
-                    <?=$row['gaji']?>
-                </td>
-                <td>
-                    <?=$row['blablabla']?>
+                    <a href="edit.php?no_tamu=<?=$data['no_tamu']?>">Edit</a> | <a href="hapus.php?no_tamu=<?=$data['no_tamu']?>">Hapus</a>
                 </td>
             </tr>
-            <?php } ?>
+            }
 
 
 
