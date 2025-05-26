@@ -85,16 +85,16 @@ if ($result->num_rows > 0) {
         }
         
         echo "<tr>
-                <td>{$no}</td>
-                <td>{$row['nama']}</td>
-                <td>{$row['id_karyawan']}</td>
-                <td>{$row['jabatan']}</td>
-                <td>Rp " . number_format($row['gaji_pokok'], 0, ',', '.') . "</td>
-                <td>Rp " . number_format($row['potongan'], 0, ',', '.') . "</td>
-                <td>Rp " . number_format($total_gaji, 0, ',', '.') . "</td>
-                <td><span class='{$status_class}'>{$row['keterangan']}</span></td>
-                <td><button>Edit</button></td>
-              </tr>";
+        <td>{$no}</td>
+        <td>{$row['nama']}</td>
+        <td>{$row['id_karyawan']}</td>
+        <td>{$row['jabatan']}</td>
+        <td>Rp " . number_format($row['gaji_pokok'], 0, ',', '.') . "</td>
+        <td>Rp " . number_format($row['potongan'], 0, ',', '.') . "</td>
+        <td>Rp " . number_format($total_gaji, 0, ',', '.') . "</td>
+        <td><span class='{$status_class}'>{$row['keterangan']}</span></td>
+        <td><a href='editGaji.php?id_karyawan=" . $row['id_karyawan'] . "&bulan=" . $row['bulan'] . "'><button>Edit</button></a></td>
+      </tr>";
         $no++;
     }
 } else {
