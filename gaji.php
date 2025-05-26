@@ -12,7 +12,7 @@
 </head>
 <body>
     <?php include "koneksi.php";
-     $query = "SELECT k.nama, k.id_karyawan, k.jabatan, g.gaji_pokok, g.potongan, g.total_gaji, g.bulan 
+     $query = "SELECT k.nama, k.id_karyawan, k.jabatan, g.gaji_pokok, g.potongan, g.total_gaji, g.bulan, g.keterangan
                   FROM gaji g
                   JOIN karyawan k ON g.id_karyawan = k.id_karyawan
                   ORDER BY g.bulan DESC";
@@ -68,28 +68,39 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    $no = 1;
-                    while ($row = $result->fetch_assoc()) {
-                        $total_gaji = $row['gaji_pokok'] - $row['potongan'];
-                        echo "<tr>
-                                <td>{$no}</td>
-                                <td>{$row['nama']}</td>
-                                <td>{$row['id_karyawan']}</td>
-                                <td>{$row['jabatan']}</td>
-                                <td>Rp " . number_format($row['gaji_pokok'], 0, ',', '.') . "</td>
-                                <td>Rp " . number_format($row['potongan'], 0, ',', '.') . "</td>
-                                <td>Rp " . number_format($total_gaji, 0, ',', '.') . "</td>
-                                <td>{$row['keterangan']}</td>
-                                <td><button>Edit</button><button></button></td>
-                              </tr>";
-                        $no++;
-                    }
-                } else {
-                    echo "<tr><td colspan='8'>Tidak ada data gaji</td></tr>";
-                }
-                ?>
+               <?php
+if ($result->num_rows > 0) {
+    $no = 1;
+    while ($row = $result->fetch_assoc()) {
+        $total_gaji = $row['gaji_pokok'] - $row['potongan'];
+        
+        // Tentukan class CSS berdasarkan status (case sensitive)
+        $status_class = '';
+        $status_text = trim($row['keterangan']);
+        
+        if ($status_text == 'TERBAYAR') {
+            $status_class = 'status-TERBAYAR';
+        } else if ($status_text == 'BELUM TERBAYAR') {
+            $status_class = 'status-BELUM-TERBAYAR';
+        }
+        
+        echo "<tr>
+                <td>{$no}</td>
+                <td>{$row['nama']}</td>
+                <td>{$row['id_karyawan']}</td>
+                <td>{$row['jabatan']}</td>
+                <td>Rp " . number_format($row['gaji_pokok'], 0, ',', '.') . "</td>
+                <td>Rp " . number_format($row['potongan'], 0, ',', '.') . "</td>
+                <td>Rp " . number_format($total_gaji, 0, ',', '.') . "</td>
+                <td><span class='{$status_class}'>{$row['keterangan']}</span></td>
+                <td><button>Edit</button><button>Hapus</button></td>
+              </tr>";
+        $no++;
+    }
+} else {
+    echo "<tr><td colspan='9'>Tidak ada data gaji</td></tr>";
+}
+?>
             </tbody>
         </table>
         
