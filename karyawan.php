@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="menu-item" style="margin-top: 20px;">
-                <a href="#logout" class="menu-link" id="logoutTab">
+                <a href="login.php" class="menu-link" id="logoutTab">
                     <i class="bi bi-box-arrow-right menu-icon"></i>
                     <span>Log Out</span>
                 </a>

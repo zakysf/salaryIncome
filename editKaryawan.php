@@ -1,7 +1,6 @@
 <?php
 include 'koneksi.php';
 
-// Cek apakah id_karyawan ada di URL
 if (!isset($_GET['id_karyawan'])) {
     echo "ID Karyawan tidak ditemukan.";
     exit;
@@ -9,7 +8,6 @@ if (!isset($_GET['id_karyawan'])) {
 
 $id_karyawan = $_GET['id_karyawan'];
 
-// Ambil data karyawan berdasarkan id_karyawan
 $stmt = $konek->prepare("SELECT * FROM karyawan WHERE id_karyawan = ?");
 $stmt->bind_param("s", $id_karyawan);
 $stmt->execute();
@@ -22,34 +20,21 @@ if ($result->num_rows === 0) {
 
 $data = $result->fetch_assoc();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Tangkap data dari form
-    $nama = $_POST['nama'];
-    $jabatan = $_POST['jabatan'];
-    $gaji_pokok = $_POST['gaji_pokok'];
-
-    // Update data
-    $update = $konek->prepare("UPDATE karyawan SET nama = ?, jabatan = ?, gaji_pokok = ? WHERE id_karyawan = ?");
-    $update->bind_param("ssis", $nama, $jabatan, $gaji_pokok, $id_karyawan);
-
-    if ($update->execute()) {
-        header("Location: indeks.php?update=success");
-        exit;
-    } else {
-        echo "Gagal mengupdate data: " . $update->error;
-    }
-}
+$stmt->close();
+$konek->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Edit Karyawan</title>
 </head>
 <body>
     <h2>Edit Data Karyawan</h2>
-    <form method="POST" action="">
+    <form method="POST" action="updateKaryawan.php">
+        <input type="hidden" name="id_karyawan" value="<?= htmlspecialchars($data['id_karyawan']) ?>">
+
         <label>Nama Lengkap:</label><br>
         <input type="text" name="nama" value="<?= htmlspecialchars($data['nama']) ?>" required><br><br>
 
@@ -61,9 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <option value="Kurir" <?= $data['jabatan'] == 'Kurir' ? 'selected' : '' ?>>Kurir</option>
             <option value="OB" <?= $data['jabatan'] == 'OB' ? 'selected' : '' ?>>OB</option>
         </select><br><br>
-
-        <label>Gaji Pokok:</label><br>
-        <input type="number" name="gaji_pokok" value="<?= htmlspecialchars($data['gaji_pokok']) ?>" required><br><br>
 
         <button type="submit">Simpan</button>
         <a href="indeks.php">Batal</a>

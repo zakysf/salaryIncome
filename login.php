@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             $_SESSION['admin'] = $username;
-            header("Location: indeks.html");
+            header("Location: indeks.php");
             exit();
         } else {
             $error = "Password salah.";
@@ -49,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <button type="submit" class="login-btn">Login</button>
-                <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
             </form>
         </div>
         <div class="welcome-box">

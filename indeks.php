@@ -37,7 +37,7 @@
             </li>
             <li class="log-out-tombol">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span><a href="#">Log Out</a></span>
+                <span><a href="login.php">Log Out</a></span>
             </li>
         </ul>
     </div>
@@ -46,7 +46,7 @@
         <h2>Data Karyawan</h2>
         <button onclick="toggleForm()">+ Add Employee</button>
 
-        <form method="POST" action="tambah_karyawan.php" style="display: none;" id="employeeForm">
+        <form method="POST" action="tambahKaryawan.php" style="display: none;" id="employeeForm">
             <div class="sejajar">
                 <div>
                     <label for="nama-lengkap">Nama Lengkap:</label>

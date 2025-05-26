@@ -8,22 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $potongan = $_POST['potongan'];
     $keterangan = $_POST['keterangan'];
 
-    // Hitung total gaji
-    $total_gaji = $gaji_pokok - $potongan;
-
-    // Prepare query update
-    $sql = "UPDATE gaji SET gaji_pokok=?, potongan=?, total_gaji=?, keterangan=? WHERE id_karyawan=? AND bulan=?";
+    // Prepare query update (tanpa total_gaji)
+    $sql = "UPDATE gaji SET gaji_pokok=?, potongan=?, keterangan=? WHERE id_karyawan=? AND bulan=?";
     $stmt = $konek->prepare($sql);
     if ($stmt === false) {
         die('Prepare failed: ' . htmlspecialchars($konek->error));
     }
 
     // Bind parameter: i = integer, s = string
-    $stmt->bind_param("iiissi", $gaji_pokok, $potongan, $total_gaji, $keterangan, $id_karyawan, $bulan);
+    $stmt->bind_param("iissi", $gaji_pokok, $potongan, $keterangan, $id_karyawan, $bulan);
 
     // Execute statement
     if ($stmt->execute()) {
-        // Redirect ke halaman gaji.php setelah berhasil update
         header("Location: gaji.php?update=success");
         exit;
     } else {
@@ -35,4 +31,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo "Invalid request method.";
 }
-?>
