@@ -5,12 +5,13 @@ if (isset($_GET['id_karyawan']) && isset($_GET['bulan'])) {
     $id_karyawan = $_GET['id_karyawan'];
     $bulan = $_GET['bulan'];
 
-    $query = mysqli_query($konek, "SELECT * FROM gaji WHERE id_karyawan='$id_karyawan' AND bulan='$bulan'");
+    $query = mysqli_query($konek, "SELECT * FROM gaji g JOIN karyawan k ON k.id_karyawan = g.id_karyawan WHERE g.id_karyawan='$id_karyawan' AND g.bulan='$bulan'");
     $data = mysqli_fetch_assoc($query);
 } else {
     echo "ID karyawan dan bulan tidak ditemukan.";
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -18,10 +19,14 @@ if (isset($_GET['id_karyawan']) && isset($_GET['bulan'])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit Gaji</title>
+    <link rel="stylesheet" href="edit.css">
 </head>
 <body>
-    <h2>Edit Data Gaji</h2>
-    <form method="POST" action="updateGaji.php">
+    <form method="POST" action="updateGaji.php" class="container">
+        <div class="sejajar">
+        <h2>Edit Data Gaji</h2>
+        <p><?= $data['nama']; ?></p>  
+        </div>
         <input type="hidden" name="id_karyawan" value="<?= $data['id_karyawan']; ?>">
         <input type="hidden" name="bulan" value="<?= $data['bulan']; ?>">
 
