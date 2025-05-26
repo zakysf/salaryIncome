@@ -12,7 +12,7 @@
 </head>
 <body>
     <?php include "koneksi.php";
-     $query = "SELECT k.nama, k.id_karyawan, k.jabatan, g.gaji_pokok, g.potongan, g.total_gaji, g.bulan, g.keterangan
+     $query = "SELECT k.nama, k.id_karyawan, k.jabatan, g.gaji_pokok, g.potongan, (g.gaji_pokok - g.potongan) AS total_gaji, g.bulan, g.keterangan
                   FROM gaji g
                   JOIN karyawan k ON g.id_karyawan = k.id_karyawan
                   ORDER BY g.bulan DESC";

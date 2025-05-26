@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="indeks.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -78,11 +78,6 @@
                 </div>
 
                 <div>
-                    <label for="tunjangan">Tunjangan:</label>
-                    <input type="number" name="tunjangan" id="tunjangan" placeholder="Masukkan Tunjangan" value="0">
-                </div>
-
-                <div>
                     <label for="potongan">Potongan:</label>
                     <input type="number" name="potongan" id="potongan" placeholder="Masukkan Potongan" value="0">
                 </div>
@@ -99,23 +94,33 @@
                     <th>Nama</th>
                     <th>ID Karyawan</th>
                     <th>Jabatan</th>
-                    <th>Gaji</th>
+                    <th>Gaji Bersih</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 include 'koneksi.php';
-                
-                $query = mysqli_query($konek, "SELECT * FROM karyawan ORDER BY nama ASC");
+
+                $query = mysqli_query($konek, "SELECT 
+                    k.nama, 
+                    k.id_karyawan, 
+                    k.jabatan, 
+                    g.gaji_pokok, 
+                    g.potongan, 
+                    (g.gaji_pokok - g.potongan) AS gaji_total
+                FROM gaji g
+                JOIN karyawan k ON g.id_karyawan = k.id_karyawan
+                ORDER BY k.nama ASC");
+
                 if (mysqli_num_rows($query) > 0) {
                     $no = 1;
                     while($data = mysqli_fetch_array($query)) {
                 ?>
                 <tr>
                     <td><?= $no ?></td>
-                    <td><?= htmlspecialchars($data['nama']) ?></td> 
-                    <td><?= htmlspecialchars($data['id_karyawan']) ?></td> 
+                    <td><?= htmlspecialchars($data['nama']) ?></td>
+                    <td><?= htmlspecialchars($data['id_karyawan']) ?></td>
                     <td><?= htmlspecialchars($data['jabatan']) ?></td>
                     <td>Rp <?= number_format($data['gaji_total'], 0, ',', '.') ?></td>
                     <td>
@@ -137,11 +142,7 @@
     <script>
         function toggleForm() {
             const form = document.getElementById('employeeForm');
-            if (form.style.display === 'none' || form.style.display === '') {
-                form.style.display = 'block';
-            } else {
-                form.style.display = 'none';
-            }
+            form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
         }
     </script>
 </body>
