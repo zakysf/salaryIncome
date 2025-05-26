@@ -56,13 +56,15 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama Karyawan</th>
+                    <th>Nama</th>
                     <th>ID Karyawan</th>
                     <th>Jabatan</th>
-                    <th>Bulan</th>
                     <th>Gaji Pokok</th>
                     <th>Potongan</th>
                     <th>Total Gaji</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -76,10 +78,11 @@
                                 <td>{$row['nama']}</td>
                                 <td>{$row['id_karyawan']}</td>
                                 <td>{$row['jabatan']}</td>
-                                <td>{$row['bulan']}</td>
                                 <td>Rp " . number_format($row['gaji_pokok'], 0, ',', '.') . "</td>
                                 <td>Rp " . number_format($row['potongan'], 0, ',', '.') . "</td>
                                 <td>Rp " . number_format($total_gaji, 0, ',', '.') . "</td>
+                                <td>{$row['keterangan']}</td>
+                                <td><button>Edit</button><button></button></td>
                               </tr>";
                         $no++;
                     }

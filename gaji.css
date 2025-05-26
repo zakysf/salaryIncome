@@ -88,9 +88,8 @@ body {
 .log-out-tombol {
     margin-top: auto;
     position: absolute;
-    bottom: 20px;
-    width: calc(100% - 40px);
-    margin-left: 20px;
+    bottom: 5px;
+    width: calc(100%);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding-top: 20px;
 }
@@ -114,7 +113,7 @@ body {
 /* Table Styles */
 .table {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
