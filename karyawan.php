@@ -64,26 +64,16 @@
         <?php
             include 'koneksi.php';
             
-            $query = mysqli_query($konek, "select * from karyawan");
-
-            // $array = [
-            //     "nama" => "zaky",
-            //     "email" => "zaky@gmail.com",
-            //     "pesan" => "saya sigma",
-            // ];
-            
+            $query = mysqli_query($konek, "select * from karyawan");            
             //mengambil per baris data
             while($data = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <!-- menampilkan isi kolom nama -->
-                <td><?=htmlspecialchar($data['id_karyawan'])?></td> 
-                <!-- menampilkan isi kolom email -->
-                <td><?=htmlspecialchar($data['nama'])?></td> 
-                <!-- menampilkan isi kolom pesan -->
-                <td><?=htmlspecialchar($data['jabatan'])?></td>
+                <td><?=htmlspecialchars($data['id_karyawan'])?></td> 
+                <td><?=htmlspecialchars($data['nama'])?></td> 
+                <td><?=htmlspecialchars($data['jabatan'])?></td>
                 <td>
-                    <a href="edit.php?no_tamu=<?=$data['no_tamu']?>">Edit</a> | <a href="hapus.php?no_tamu=<?=$data['no_tamu']?>">Hapus</a>
+                    <a href="edit.php?id_karyawan=<?=$data['id_karyawan']?>">Edit</a> | <a href="hapus.php?id_karyawan=<?=$data['id_karyawan']?>">Hapus</a>
                 </td>
             </tr>
         <?php
