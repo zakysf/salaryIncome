@@ -57,7 +57,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>ID Karyawan</th>
+                    <th>ID</th>
                     <th>Jabatan</th>
                     <th>Gaji Pokok</th>
                     <th>Potongan</th>
@@ -93,7 +93,7 @@ if ($result->num_rows > 0) {
                 <td>Rp " . number_format($row['potongan'], 0, ',', '.') . "</td>
                 <td>Rp " . number_format($total_gaji, 0, ',', '.') . "</td>
                 <td><span class='{$status_class}'>{$row['keterangan']}</span></td>
-                <td><button>Edit</button><button>Hapus</button></td>
+                <td><button>Edit</button></td>
               </tr>";
         $no++;
     }
