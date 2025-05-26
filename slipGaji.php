@@ -12,10 +12,10 @@
 </head>
 <body>
     <?php include "koneksi.php";
-     $query = "SELECT k.nama, k.id_karyawan, k.jabatan, g.gaji_pokok, g.potongan, (g.gaji_pokok - g.potongan) AS total_gaji, g.bulan, g.keterangan
+     $query = "SELECT k.nama, k.id_karyawan, k.jabatan, g.gaji_pokok, g.potongan, (g.gaji_pokok - g.potongan) AS total_gaji, g.keterangan
                   FROM gaji g
                   JOIN karyawan k ON g.id_karyawan = k.id_karyawan
-                  ORDER BY g.bulan DESC";
+                  ORDER BY k.id_karyawan ASC";
         
         $result = $konek->query($query);
     ?>
@@ -72,7 +72,7 @@ if ($result->num_rows > 0) {
         echo "<tr>
         <td>{$no}</td>
         <td>{$row['nama']}</td>
-  <td><a href='cetak.php?id_karyawan=" . $row['id_karyawan'] . "&bulan=" . $row['bulan'] . "'><button>Edit</button></a></td>
+  <td><a href='cetak.php?id_karyawan=" . $row['id_karyawan'] . "'><button>Edit</button></a></td>
       </tr>";
         $no++;
     }
