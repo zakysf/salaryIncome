@@ -8,13 +8,24 @@ if (!isset($_GET['id_karyawan'])) {
 
 $id_karyawan = $_GET['id_karyawan'];
 
-// Hapus data karyawan berdasarkan id_karyawan
-$stmt = $konek->prepare("DELETE FROM karyawan WHERE id_karyawan = ?");
-$stmt->bind_param("s", $id_karyawan);
+// Hapus data dari tabel gaji terlebih dahulu
+$stmtGaji = $konek->prepare("DELETE FROM gaji WHERE id_karyawan = ?");
+$stmtGaji->bind_param("s", $id_karyawan);
+$stmtGaji->execute();
+$stmtGaji->close();
 
-if ($stmt->execute()) {
+// Setelah itu baru hapus data dari tabel karyawan
+$stmtKaryawan = $konek->prepare("DELETE FROM karyawan WHERE id_karyawan = ?");
+$stmtKaryawan->bind_param("s", $id_karyawan);
+
+if ($stmtKaryawan->execute()) {
+    $stmtKaryawan->close();
+    $konek->close();
     header("Location: indeks.php?hapus=success");
     exit;
 } else {
-    echo "Gagal menghapus data: " . $stmt->error;
+    echo "Gagal menghapus data: " . $stmtKaryawan->error;
+    $stmtKaryawan->close();
+    $konek->close();
 }
+?>

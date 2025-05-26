@@ -55,7 +55,7 @@ $total_gaji = $gaji_pokok + $tunjangan + $bonus - $potongan;
             </li>
             <li class="log-out-tombol">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span><a href="#">Log Out</a></span>
+                <span><a href="login.php">Log Out</a></span>
             </li>
         </ul>
     </div>
