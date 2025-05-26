@@ -1,30 +1,32 @@
 <?php
 session_start();
-include "koneksi.php";
+include 'koneksi.php'; // file koneksi ke database
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
-    $stmt = $konek->prepare("SELECT * FROM admin WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
+// Ambil data dari database
+$query = mysqli_query($konek, "SELECT * FROM admin WHERE username = '$username'");
 
-    $result = $stmt->get_result();
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['admin'] = $username;
-            header("Location: indeks.php");
-            exit();
-        } else {
-            $error = "Password salah.";
-        }
+if (mysqli_num_rows($query) === 1) {
+    $user = mysqli_fetch_assoc($query);
+
+    // Verifikasi password
+    if (password_verify($password, $user['password'])) {
+        // Set session
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['jabatan'] = $user['jabatan'];
+        header("Location: indeks.php");
+        exit;
     } else {
-        $error = "Username tidak ditemukan.";
+        echo "Password salah";
     }
-}
+} 
+// else {
+//     echo "Username tidak ditemukan";
+// }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
         <div class="welcome-box">
-            <h1>WELCOME<br>BACK!</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            <h1>Selamat<br>Datang!</h1>
+            <p>Aplikasi Sistem Penggajian PT. Razamaky</p>
         </div>
     </div>
 </body>
