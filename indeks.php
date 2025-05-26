@@ -73,8 +73,8 @@
 
             <div class="sejajar">
                 <div>
-                    <label for="gaji_pokok">Gaji Pokok:</label>
-                    <input type="number" name="gaji_pokok" id="gaji_pokok" placeholder="Masukkan Gaji Pokok" required>
+                    <label for="gaji">Gaji Pokok:</label>
+                    <input type="number" name="gaji_pokok" id="gaji" placeholder="Masukkan Gaji Pokok" required>
                 </div>
 
                 <div>
@@ -117,10 +117,10 @@
                     <td><?= htmlspecialchars($data['nama']) ?></td> 
                     <td><?= htmlspecialchars($data['id_karyawan']) ?></td> 
                     <td><?= htmlspecialchars($data['jabatan']) ?></td>
-                    <td>Rp <?= number_format($data['gaji_total'], 0, ',', '.') ?></td>
+                    <td>Rp <?= number_format($data['gaji'], 0, ',', '.') ?></td>
                     <td>
-                        <a href="editKaryawan.php?id_karyawan=<?= $data['id_karyawan'] ?>">Edit</a> | 
-                        <a href="hapusKaryawan.php?id_karyawan=<?= $data['id_karyawan'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                        <a href="edit.php?id_karyawan=<?= $data['id_karyawan'] ?>">Edit</a> | 
+                        <a href="hapus.php?id_karyawan=<?= $data['id_karyawan'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
                     </td>
                 </tr>
                 <?php
