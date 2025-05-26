@@ -29,26 +29,26 @@ $konek->close();
 <head>
     <meta charset="UTF-8">
     <title>Edit Karyawan</title>
+    <link rel="stylesheet" href="editKaryawan.css">
 </head>
 <body>
-    <h2>Edit Data Karyawan</h2>
     <form method="POST" action="updateKaryawan.php">
+        <h2>Edit Data Karyawan</h2>
         <input type="hidden" name="id_karyawan" value="<?= htmlspecialchars($data['id_karyawan']) ?>">
 
-        <label>Nama Lengkap:</label><br>
-        <input type="text" name="nama" value="<?= htmlspecialchars($data['nama']) ?>" required><br><br>
-
-        <label>Jabatan:</label><br>
-        <select name="jabatan" required>
+        <label>Nama Lengkap:   <input type="text" name="nama" value="<?= htmlspecialchars($data['nama']) ?>" required></label>
+        <label>Jabatan:          <select name="jabatan" required>
             <option value="Permanent" <?= $data['jabatan'] == 'Permanent' ? 'selected' : '' ?>>Permanent</option>
             <option value="SPV" <?= $data['jabatan'] == 'SPV' ? 'selected' : '' ?>>SPV</option>
             <option value="Manajer" <?= $data['jabatan'] == 'Manajer' ? 'selected' : '' ?>>Manajer</option>
             <option value="Kurir" <?= $data['jabatan'] == 'Kurir' ? 'selected' : '' ?>>Kurir</option>
             <option value="OB" <?= $data['jabatan'] == 'OB' ? 'selected' : '' ?>>OB</option>
-        </select><br><br>
+        </select></label>
 
-        <button type="submit">Simpan</button>
-        <a href="indeks.php">Batal</a>
+
+        <button type="submit" class="simpan">Simpan</button>
+         <a href="indeks.php"><button class="batal">Batal</button></a>
+       
     </form>
 </body>
 </html>
