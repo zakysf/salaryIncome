@@ -1,11 +1,10 @@
 <?php
 include 'koneksi.php';
 
-if (isset($_GET['id_karyawan']) && isset($_GET['bulan'])) {
+if (isset($_GET['id_karyawan'])) {
     $id_karyawan = $_GET['id_karyawan'];
-    $bulan = $_GET['bulan'];
 
-    $query = mysqli_query($konek, "SELECT * FROM gaji g JOIN karyawan k ON k.id_karyawan = g.id_karyawan WHERE g.id_karyawan='$id_karyawan' AND g.bulan='$bulan'");
+    $query = mysqli_query($konek, "SELECT * FROM gaji g JOIN karyawan k ON k.id_karyawan = g.id_karyawan WHERE g.id_karyawan='$id_karyawan'");
     $data = mysqli_fetch_assoc($query);
 } else {
     echo "ID karyawan dan bulan tidak ditemukan.";
@@ -28,7 +27,6 @@ if (isset($_GET['id_karyawan']) && isset($_GET['bulan'])) {
         <p><?= $data['nama']; ?></p>  
         </div>
         <input type="hidden" name="id_karyawan" value="<?= $data['id_karyawan']; ?>">
-        <input type="hidden" name="bulan" value="<?= $data['bulan']; ?>">
 
         <label>Gaji Pokok</label>
         <input type="number" name="gaji_pokok" value="<?= $data['gaji_pokok']; ?>"><br>
