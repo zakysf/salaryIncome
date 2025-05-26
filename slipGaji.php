@@ -43,11 +43,11 @@ $total_gaji = $gaji_pokok + $tunjangan + $bonus - $potongan;
             </div>
             <li>
                 <i class="fa-solid fa-users-line"></i>
-                <span><a href="#">Karyawan</a></span>
+                <span><a href="indeks.php">Karyawan</a></span>
             </li>
             <li>
                 <i class="fa-solid fa-money-bill-transfer"></i>
-                <span><a href="#">Gaji</a></span>
+                <span><a href="gaji.php">Gaji</a></span>
             </li>
             <li>
                 <i class="fa-solid fa-file-invoice"></i>

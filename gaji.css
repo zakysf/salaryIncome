@@ -1,73 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    overflow-x: hidden;
-    background-color: #FFFAFA;
-    font-family: poppins;
-    margin-left: 60px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
     display: flex;
 }
 
+/* Sidebar Styles */
 .sidebar {
-    width: 60px;
+    width: 250px;
     height: 100vh;
-    background-color: #26262b;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px 0;
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    transition: width 0.3s ease;
-    overflow: hidden;
     left: 0;
     top: 0;
-    bottom: 0;
-}
-
-.sidebar:hover {
-    width: 200px;
 }
 
 .isi-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
 }
 
 .data-akun {
-    color: white;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
 }
 
-.isi-list li {
+.data-akun li {
     display: flex;
     align-items: center;
+    color: white;
+}
+
+.data-akun i {
+    font-size: 40px;
+    margin-right: 15px;
+    background: rgba(255, 255, 255, 0.2);
     padding: 15px;
+    border-radius: 50%;
+}
+
+.data-akun span h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.data-akun span p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.isi-list>li {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.isi-list>li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.isi-list>li i {
+    font-size: 18px;
+    color: white;
+    margin-right: 15px;
+    width: 20px;
+}
+
+.isi-list>li span a {
     color: white;
     text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
 }
-
-.isi-list a {
-    text-decoration: none;
-    color: white;
-}
-
-.isi-list li i {
-    min-width: 30px;
-    text-align: center;
-}
-
-.isi-list li span {
-    margin-left: 10px;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.sidebar:hover .isi-list li span {
-    opacity: 1;
-}
-
 
 .log-out-tombol {
     margin-top: auto;
-    background-color: #1e1e22;
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+}
+
+/* Container Styles */
+.container {
+    margin-left: 250px;
+    padding: 30px;
+    width: calc(100% - 250px);
+    background-color: white;
+    min-height: 100vh;
+}
+
+.container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* Table Styles */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.table thead th {
+    color: white;
+    font-weight: 600;
+    padding: 15px;
+    font-size: 14px;
+    text-align: center;
+    border: none;
+}
+
+.table tbody td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    text-align: center;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .container {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 20px;
+    }
+
+    .container h2 {
+        font-size: 24px;
+    }
+
+    .table {
+        font-size: 12px;
+    }
+
+    .table thead th,
+    .table tbody td {
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar .isi-list span {
+        display: none;
+    }
+
+    .data-akun span {
+        display: none;
+    }
+
+    .container {
+        margin-left: 60px;
+        width: calc(100% - 60px);
+        padding: 15px;
+    }
 }

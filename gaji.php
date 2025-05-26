@@ -33,7 +33,7 @@
             </div>
             <li>
                 <i class="fa-solid fa-users-line"></i>
-                <span><a href="#">Karyawan</a></span>
+                <span><a href="indeks.php">Karyawan</a></span>
             </li>
             <li>
                 <i class="fa-solid fa-money-bill-transfer"></i>
@@ -51,11 +51,8 @@
     </div>
 
     <div class="container">
-   
-        
         <h2>Data Gaji Karyawan</h2>
-        
-        <table border='1' class="salary-table">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>No</th>
@@ -97,5 +94,7 @@
         $konek->close();
         ?>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
 </body>
 </html>

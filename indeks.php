@@ -35,20 +35,20 @@
             </div>
             <li>
                 <i class="fa-solid fa-users-line"></i>
-                <span><a href="#">Karyawannnnnn</a></span>
+                <span><a href="indeks.php">Karyawan</a></span>
             </li>
             <li>
                 <i class="fa-solid fa-money-bill-transfer"></i>
-                <span><a href="#">Gaji</a></span>
+                <span><a href="gaji.php">Gaji</a></span>
             </li>
             <li>
                 <i class="fa-solid fa-file-invoice"></i>
-                <span><a href="slipGaji.html">Slip Gaji</a>
+                <span><a href="slipGaji.php">Slip Gaji</a>
                 </span>
             </li>
             <li class="log-out-tombol">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span><a href="#">Log Out</a></span>
+                <span><a href="">Log Out</a></span>
             </li>
         </ul>
     </div>
