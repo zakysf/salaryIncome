@@ -1,30 +1,29 @@
 <?php
 session_start();
-include 'koneksi.php'; // file koneksi ke database
+include 'koneksi.php';
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-// Ambil data dari database
-$query = mysqli_query($konek, "SELECT * FROM admin WHERE username = '$username'");
+    $query = mysqli_query($konek, "SELECT * FROM admin WHERE username='$username'");
 
-if (mysqli_num_rows($query) === 1) {
-    $user = mysqli_fetch_assoc($query);
+    if (mysqli_num_rows($query) == 1) {
+        $user = mysqli_fetch_assoc($query);
 
-    // Verifikasi password
-    if (password_verify($password, $user['password'])) {
-        // Set session
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['jabatan'] = $user['jabatan'];
-        header("Location: indeks.php");
-        exit;
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['nama'] = $user['nama'];
+            $_SESSION['jabatan'] = $user['jabatan'];
+            header("Location: indeks.php");
+            exit;
+        } else {
+            echo "Password salah";
+        }
     } else {
-        echo "Password salah";
+        echo "Username tidak ditemukan";
     }
-} 
-// else {
-//     echo "Username tidak ditemukan";
-// }
+}
 ?>
 
 

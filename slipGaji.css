@@ -382,6 +382,21 @@ button:hover {
     margin-right: 8px;
 }
 
+tbody td a button {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s;
+}
+
+table tbody td a button:hover {
+    background-color: #667eea;
+    color: white;
+}
+
 @media print {
     body * {
         visibility: hidden;

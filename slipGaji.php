@@ -34,8 +34,9 @@ if (!isset($_SESSION['username'])) {
                 <li>
                     <i class="fas fa-user"></i>
                     <span>
-                        <h4><?php echo isset($nama) ? $nama : 'Admin'; ?></h4>
-                        <p><?php echo isset($jabatan) ? $jabatan : 'Administrator'; ?></p>
+<h4><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Admin'; ?></h4>
+<p><?= isset($_SESSION['jabatan']) ? htmlspecialchars($_SESSION['jabatan']) : 'Administrator'; ?></p>
+
                     </span>
                 </li>
             </div>
@@ -53,13 +54,13 @@ if (!isset($_SESSION['username'])) {
             </li>
             <li class="log-out-tombol">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span><a href="login.php">Log Out</a></span>
+                <span><a href="logout.php">Log Out</a></span>
             </li>
         </ul>
     </div>
 
     <div class="container">
-        <h2>Data Gaji Karyawan</h2>
+        <h2>Cetak Slip Gaji Karyawan</h2>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -80,7 +81,7 @@ if ($result->num_rows > 0) {
         echo "<tr>
         <td>{$no}</td>
         <td>{$row['nama']}</td>
-  <td><a href='cetak.php?id_karyawan=" . $row['id_karyawan'] . "'><button>Edit</button></a></td>
+  <td><a href='cetak.php?id_karyawan=" . $row['id_karyawan'] . "'><button>Cetak</button></a></td>
       </tr>";
         $no++;
     }

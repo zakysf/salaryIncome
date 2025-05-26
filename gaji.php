@@ -34,8 +34,9 @@ if (!isset($_SESSION['username'])) {
                 <li>
                     <i class="fas fa-user"></i>
                     <span>
-                        <h4><?php echo isset($nama) ? $nama : 'Admin'; ?></h4>
-                        <p><?php echo isset($jabatan) ? $jabatan : 'Administrator'; ?></p>
+<h4><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Admin'; ?></h4>
+<p><?= isset($_SESSION['jabatan']) ? htmlspecialchars($_SESSION['jabatan']) : 'Administrator'; ?></p>
+
                     </span>
                 </li>
             </div>
@@ -53,7 +54,7 @@ if (!isset($_SESSION['username'])) {
             </li>
             <li class="log-out-tombol">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span><a href="#">Log Out</a></span>
+                <span><a href="logout.php">Log Out</a></span>
             </li>
         </ul>
     </div>
@@ -101,7 +102,11 @@ if ($result->num_rows > 0) {
         <td>Rp " . number_format($row['potongan'], 0, ',', '.') . "</td>
         <td>Rp " . number_format($total_gaji, 0, ',', '.') . "</td>
         <td><span class='{$status_class}'>{$row['keterangan']}</span></td>
-        <td><a href='editGaji.php?id_karyawan=" . $row['id_karyawan'] . "'><button>Edit</button></a></td>
+        <td>
+            <a href='editGaji.php?id_karyawan=" . $row['id_karyawan'] . "'>
+                <button>Edit</button>
+            </a>
+        </td>
       </tr>";
         $no++;
     }
