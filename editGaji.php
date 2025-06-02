@@ -24,10 +24,10 @@ if (isset($_GET['id_karyawan'])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit Gaji</title>
-    <link rel="stylesheet" href="edit.css">
+    <link rel="stylesheet" href="css/edit.css">
 </head>
 <body>
-    <form method="POST" action="updateGaji.php" class="container">
+    <form method="POST" action="css/updateGaji.php" class="container">
         <div class="sejajar">
         <h2>Edit Data Gaji</h2>
         <p><?= $data['nama']; ?></p>  

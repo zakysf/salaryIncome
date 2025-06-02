@@ -35,7 +35,7 @@ $konek->close();
 <head>
     <meta charset="UTF-8">
     <title>Edit Karyawan</title>
-    <link rel="stylesheet" href="editKaryawan.css">
+    <link rel="stylesheet" href="css/editKaryawan.css">
 </head>
 <body>
     <form method="POST" action="updateKaryawan.php">

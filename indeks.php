@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Karyawan</title>
-    <link rel="stylesheet" href="indeks.css">
+    <link rel="stylesheet" href="css/indeks.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -146,6 +146,9 @@ if (!isset($_SESSION['username'])) {
                 ?>
             </tbody>
         </table>
+        <?php
+        $konek->close();
+        ?>
     </div>
 
     <script>
